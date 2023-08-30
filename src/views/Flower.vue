@@ -25,7 +25,7 @@
                 <h3 class="mt-20 text-3xl">You may also like</h3>
                 <div class="grid grid-cols-2 lg:grid-cols-3 gap-2 gap-y-2 mt-2 font-base">
                     <div>
-                        <img class="rounded object-cover w-full" src="../assets/tulip.jpeg" alt="">
+                        <img class="rounded-xl object-cover w-full" src="../assets/tulip.jpeg" alt="">
                         <div class="flex flex-col lg:flex-row justify-between lg:items-center">
                             <h3 class="text-sm mt-2 font-bold">Brown Double Tulip</h3>
                             <p class="text-xs mt-1.5">$ 1.99/ea</p>
@@ -33,7 +33,7 @@
 
                     </div>
                     <div>
-                        <img class="rounded object-cover w-full" src="../assets/tulip.jpeg" alt="">
+                        <img class="rounded-xl object-cover w-full" src="../assets/tulip.jpeg" alt="">
                         <div class="flex flex-col lg:flex-row justify-between lg:items-center">
                             <h3 class="text-sm mt-2 font-bold">Brown Double Tulip</h3>
                             <p class="text-xs mt-1.5">$ 1.99/ea</p>
@@ -41,7 +41,7 @@
 
                     </div>
                     <div>
-                        <img class="rounded object-cover w-full" src="../assets/tulip.jpeg" alt="">
+                        <img class="rounded-xl object-cover w-full" src="../assets/tulip.jpeg" alt="">
                         <div class="flex flex-col lg:flex-row justify-between lg:items-center">
                             <h3 class="text-sm mt-2 font-bold">Brown Double Tulip</h3>
                             <p class="text-xs mt-1.5">$ 1.99/ea</p>
