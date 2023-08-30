@@ -3,7 +3,7 @@
 ## PROJECT BRIEF
 Buttercup is an online e-commerce shop that stocks a wide variety of flowers. As a user, you are welcome to view flower catalog, individual flower detail, add flowers to your basket, place an order and schedule delivery and pick up of ordered flowers. This repo houses all the client related code written in JavaScript, Vue Js and Tailwind CSS.
 
-The backend part of this project is found [in this repo](http://localhost:8080/) and is written using Django, DRF, PostgreSQL and containerised using Docker.
+The backend part of this project is found [in this repo](https://github.com/nicksonlangat/buttercup_api.git/) and is written using Django, DRF, PostgreSQL and containerised using Docker.
 The live demo of this project is accessible [via this link](http://localhost:8080/) so go ahead and try it out.
 
 ## FEATURES

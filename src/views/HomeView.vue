@@ -40,8 +40,8 @@ body {
   background-position: center; 
   background-repeat: no-repeat; 
   background-size: cover; */
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 249 195 / var(--tw-bg-opacity));
+ 
+  background-color: #f1f3f1;
 
 }
 </style>

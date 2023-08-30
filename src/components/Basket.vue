@@ -12,43 +12,31 @@
 
                         <div class="flex justify-between items-center">
                             <h1 class="text-4xl font-extrabold">My basket</h1>
-                            <IconX size="32" @click="toggleModal" />
+                            <IconX class="cursor-pointer" size="32" @click="toggleModal" />
                         </div>
                         <div class="flex mt-8 flex-col gap-5">
 
-                            <div class="grid grid-cols-2 gap-5 ">
-                                <img class="rounded-xl lg:h-40 w-full object-cover" src="../assets/tulip.jpeg" alt="">
+                            <div v-for="(item, index) in cartItems" :key="index" class="grid grid-cols-2 gap-5 ">
+                                <img class="rounded-xl lg:h-40 w-full object-cover" :src="baseURL+item.product.image" alt="">
                                 <div class="flex flex-col gap-6">
                                     <div>
-                                        <h3 class="text-lg font-bold">Brown Double Tulip</h3>
-                                        <p class="text-sm">$ 1.99/ea</p>
+                                        <h3 class="text-lg font-bold">{{ item.product.name }}</h3>
+                                        <p class="text-sm">$ {{item.price}}/ea</p>
+                                        
                                     </div>
                                     <div class="border border-[#101014] px-6 py-1.5 flex justify-between rounded-lg">
-                                        <IconMinus />
-                                        <p>1</p>
-                                        <IconPlus />
+                                        <IconMinus class="cursor-pointer" @click="editProductQuantity('remove', item)" />
+                                        <p>{{ item.quantity }}</p>
+                                        <IconPlus class="cursor-pointer" @click="editProductQuantity('add', item)" />
                                     </div>
                                 </div>
                             </div>
-                            <div class="grid grid-cols-2 gap-5">
-                                <img class="rounded" src="../assets/tulip.jpeg" alt="">
-                                <div class="flex flex-col gap-6">
-                                    <div>
-                                        <h3 class="text-lg font-bold">Brown Double Tulip</h3>
-                                        <p class="text-sm">$ 1.99/ea</p>
-                                    </div>
-                                    <div class="border border-[#101014] px-6 py-1.5 flex justify-between rounded-lg">
-                                        <IconMinus />
-                                        <p>1</p>
-                                        <IconPlus />
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                         <div class="mt-5">
                             <div class="flex mt-2 justify-between">
                                 <p>Subtotal</p>
-                                <p>$ 29.99</p>
+                                <p>$ {{ cartTotal }}</p>
                             </div>
                             <button class="bg-[#101015] mt-2 text-white px-6 py-1.5 rounded-lg w-full">Submit order</button>
                         </div>
@@ -69,14 +57,11 @@ import {
     DialogTitle,
 } from '@headlessui/vue'
 import {
-    IconCheck,
-    IconX
-} from '@tabler/icons-vue';
-import {
-    IconBell,
+    IconX,
     IconMinus,
     IconPlus
 } from '@tabler/icons-vue';
+import { mapGetters, mapActions } from 'vuex';
 export default {
     components: {
         TransitionRoot,
@@ -84,25 +69,77 @@ export default {
         Dialog,
         DialogPanel,
         DialogTitle,
-        IconBell,
-        IconCheck,
         IconX,
         IconMinus,
         IconPlus
     },
     data() {
         return {
-            isOpen: false
+            isOpen: false,
+            baseURL: process.env.VUE_APP_BASE_URL,
+            responses: []
+        }
+    },
+    computed: {
+        ...mapGetters({
+            storedCartItems: 'storedCartItems',
+            storedCartTotal: 'storedCartTotal'
+        }),
+        cartItems() {
+            return this.storedCartItems
+        },
+        cartTotal(){
+            return this.storedCartTotal
         }
     },
     methods: {
+        ...mapActions({
+            getCartItems: 'getCartItems',
+            addCartItem: 'addCartItem'
+        }),
+        init() {
+            this.getCartItems({
+                cb: () => {}
+            })
+        },
+        submit(product, index) {
+            quantity = this.responses[index]
+            console.log(quantity)
+        },
         toggleModal() {
             this.isOpen = !this.isOpen
-        }
+        },
+        editProductQuantity(operation, product) {
+            if(operation==='add') {
+                product.quantity++
+                this.addToCart(product.product, product.quantity)
+            }
+            if(operation==='remove') {
+                product.quantity--
+                this.addToCart(product.product, product.quantity)
+            }
+        },
+        addToCart(flower, quantity) {
+            let payload = {
+                "product": flower,
+                "quantity": quantity,
+                "overide_quantity": true,
+            }
+            this.addCartItem({
+                payload: payload,
+                cb: (res => {
+                   
+                })
+            })
+        },
     },
     mounted() {
+        this.init()
         this.emitter.on("showBasket", value => {
             this.toggleModal()
+        })
+        this.emitter.on("updateCart", value => {
+            this.init()
         })
     }
 }
