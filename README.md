@@ -1,5 +1,23 @@
 # Buttercup
 
+## MOBILE APP SCREENS
+<p align="start">
+  <img src="screens/screen1.png" width="256" height="600">
+  <img src="screens/screen2.png" width="256" height="600">
+  <img src="screens/screen3.png" width="256" height="600">
+   <img src="screens/screen4.png" width="256" height="600">
+   <img src="screens/screen5.png" width="256" height="600">
+  <img src="screens/screen6.png" width="256" height="600">
+</p>
+
+## DESKTOP APP SCREENS
+<p align="start">
+  <img src="screens/screen7.png" height="600">
+  <img src="screens/screen8.png" height="600">
+  <img src="screens/screen9.png" height="600">
+   <img src="screens/screen10.png" height="600">
+</p>
+
 ## PROJECT BRIEF
 Buttercup is an online e-commerce shop that stocks a wide variety of flowers. As a user, you are welcome to view flower catalog, individual flower detail, add flowers to your basket, place an order and schedule delivery and pick up of ordered flowers. This repo houses all the client related code written in JavaScript, Vue Js and Tailwind CSS.
 
@@ -15,6 +33,12 @@ The live demo of this project is accessible [via this link](http://localhost:808
 - **Register & Login pages**. These pages allow users to create user accounts that they can use to place orders.
 
 ## CHANGELOG
+
+### Version 1.0.2
+#### New Features
+- Improved most of the existing features.
+#### Bug fixes
+-No bug fixes in this release
 
 ### Version 1.0.1
 #### New Features
