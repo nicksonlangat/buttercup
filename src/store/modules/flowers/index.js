@@ -20,7 +20,7 @@ const mutations = {
 const actions = {
   async getAllFlowers({ commit, state }, { setResult=true, cb }) {
   return await Api()
-      .get(`/flowers/list/`)
+      .get(`/flowers/`)
       .then((response) => {
           if (setResult) {
               commit('SET_FLOWERS', response.data.results)

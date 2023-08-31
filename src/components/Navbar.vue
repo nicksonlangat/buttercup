@@ -3,16 +3,16 @@
     <a href="/flowers" class="text-5xl hidden lg:block font-extrabold">Buttercup</a>
     <div class="hidden lg:flex gap-5 items-center text-[#101014]">
         <a href="/flowers">Shop</a>
-        <a href="/blog">Blog</a>
+        <a href="/">Blog</a>
         <a href="/">About us</a>
-        <a href="/account">My profile</a>
+        <a href="/">My profile</a>
         <button @click="showBasket" class="bg-[#101014] text-white px-6 py-1.5 rounded">Basket ({{ cartLength }})</button>
     </div>
     <div class="lg:hidden flex justify-between items-center">
         <button @click="showMenu" class="text-[#101014]">
             <IconMenu2 size="36" />
         </button>
-        <h1 class="text-5xl font-extrabold">Buttercup</h1>
+        <a href="/flowers" class="text-5xl font-extrabold">Buttercup</a>
         <button class="text-[#101014]">
             <IconShoppingCart @click="showBasket" size="36" />
         </button>

@@ -42,16 +42,32 @@ async addCartItem({ commit }, { payload, cb }) {
             return Promise.reject(error)
         })
   },
-  removeCartItem ({ commit }, cartItem) {
-    axios.delete('/api/cart/delete', cartItem).then((response) => {
-      commit('UPDATE_CART', response.data)
-    });
+  async removeCartItem ({ commit },{ payload, cb }) {
+    return await Api()
+        .post('cart/', payload)
+        .then((response) => {
+            if (cb) {
+                cb(response.data)
+            }
+            return response.data
+        })
+        .catch((error) => {
+            return Promise.reject(error)
+        })
   },
-  removeAllCartItems ({ commit }) {
-    axios.delete('/api/cart/delete/all').then((response) => {
-      commit('UPDATE_CART', response.data)
-    });
-  }
+  async removeAllCartItems ({ commit },{ payload, cb }) {
+    return await Api()
+        .post('cart/', payload)
+        .then((response) => {
+            if (cb) {
+                cb(response.data)
+            }
+            return response.data
+        })
+        .catch((error) => {
+            return Promise.reject(error)
+        })
+  },
 }
 
 const getters = {
@@ -62,7 +78,6 @@ const getters = {
     return state.cartTotal
   },
   storedCartLength(state) {
-    console.log(state.cartItems.length)
     return state.cartItems.length
   }
 }
